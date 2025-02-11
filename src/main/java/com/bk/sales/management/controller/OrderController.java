@@ -1,5 +1,7 @@
 package com.bk.sales.management.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +35,17 @@ public class OrderController {
     @PutMapping("/update/{orderId}")
     public ResponseEntity<OrderResponseDto> updateOrder(@PathVariable String orderId, @RequestBody OrderRequestDto orderRequestDto) {
         return ResponseEntity.ok(orderService.updateOrder(orderId, orderRequestDto));
+    }
+    
+    @GetMapping("/getAll")
+    public ResponseEntity<List<OrderResponseDto>> getAllOrders() {
+        List<OrderResponseDto> orders = orderService.getAllOrders();
+        return ResponseEntity.ok(orders);
+    }
+    
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAllOrders() {
+        orderService.deleteAllOrders();
+        return ResponseEntity.noContent().build();
     }
 }

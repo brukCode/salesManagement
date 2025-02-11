@@ -8,7 +8,6 @@ import com.bk.sales.management.model.ShippingAddress;
 import lombok.*;
 
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,11 +26,10 @@ public class OrderResponseDto {
     public OrderResponseDto(Order order) {
         this.orderId = order.getOrderId();
         this.customerId = order.getCustomerId();
-       // this.products = order.getProducts().stream().map(OrderItemDto::new).toList();
         this.totalAmount = order.getTotalAmount();
         this.status = order.getStatus();
         this.discount = order.getDiscount();
-       this.shippingAddress = order.getShippingAddress();
+        this.shippingAddress = order.getShippingAddress();
         this.notes = order.getNotes();
     }
 }
